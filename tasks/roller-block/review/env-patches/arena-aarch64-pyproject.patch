@@ -1,0 +1,37 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 585cba0b53..086f327583 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -97,7 +97,7 @@ gr00t-client = [
+ 
+ [tool.uv]
+ # Arena supports Linux x86_64 only; resolve and lock for exactly that platform.
+-environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
++environments = ["sys_platform == 'linux' and platform_machine == 'aarch64'"]
+ # Install the source-based sim stack (Isaac Lab editable from the submodule)
+ # and the remote OpenPI client on a bare `uv sync`.
+ default-groups = ["isaaclab-from-source", "openpi"]
+@@ -163,8 +163,8 @@ url = "https://pypi.org/simple"
+ default = true
+ 
+ [[tool.uv.index]]
+-name = "pytorch-cu128"
+-url = "https://download.pytorch.org/whl/cu128"
++name = "pytorch-cu130"
++url = "https://download.pytorch.org/whl/cu130"
+ explicit = true
+ 
+ [tool.uv.sources]
+@@ -177,9 +177,9 @@ explicit = true
+ # same-named package from the NVIDIA index.
+ mujoco-usd-converter = { index = "pypi" }
+ isaacteleop = { index = "pypi" }
+-torch = { index = "pytorch-cu128" }
+-torchvision = { index = "pytorch-cu128" }
+-torchaudio = { index = "pytorch-cu128" }
++torch = { index = "pytorch-cu130" }
++torchvision = { index = "pytorch-cu130" }
++torchaudio = { index = "pytorch-cu130" }
+ gr00t = { path = "submodules/Isaac-GR00T", editable = true, group = "gr00t-client" }
+ # The upstream development project and its Isaac Lab packages come editable
+ # from the submodule checkout whenever the source group is active.

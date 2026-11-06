@@ -1,0 +1,2465 @@
+{
+ "independence_note": "An agent cannot prove its own independence. This regrade's lineage touches the task author: regrade.py was partly written by the agent that wrote the task code, this agent read that version and task text before running, the arm poses, hull vertices and velocity columns come from the task code's own logger, and the task prompt quoted the slip figures. The instruction not to read roller_block.py before producing numbers was followed according to this agent, and that claim is unverifiable from inside.",
+ "regrade_sha256_prefix": "2bc8878f2616",
+ "task_sha256_prefix": "9473dfe0024f",
+ "numbers_written_before_reading_task_code": true,
+ "results": [
+  {
+   "label": "arm_stays",
+   "regraded": 0.5,
+   "reported": 0.5,
+   "agrees": true,
+   "note": "no latch, travel 21.05 cm; slip replay 0.00278, column 0.00171"
+  },
+  {
+   "label": "demo1",
+   "regraded": 1.0,
+   "reported": 1.0,
+   "agrees": true,
+   "note": "success at step 852, hold 21; slip replay 0.00244, column 0.00171"
+  },
+  {
+   "label": "demo2",
+   "regraded": 1.0,
+   "reported": 1.0,
+   "agrees": true,
+   "note": "success at step 852, hold 21; slip replay 0.00244, column 0.00171"
+  },
+  {
+   "label": "no_transfer",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "latch step 226 by ['underside_low', 'tilt']; slip replay 0.01887, column 0.01822"
+  },
+  {
+   "label": "s_drag_full",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "latch step 223 by ['underside_low']; slip replay 0.01752, column 0.01687"
+  },
+  {
+   "label": "s_drag_short",
+   "regraded": 0.25,
+   "reported": 0.25,
+   "agrees": true,
+   "note": "no latch, travel 6.81 cm; slip replay 0.00211, column 0.00092"
+  },
+  {
+   "label": "s_hold_roller_13",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "no latch, travel 3.48 cm; slip replay 0.01311, column 0.01295"
+  },
+  {
+   "label": "s_hold_roller_full",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "latch step 331 by ['slip']; slip replay 0.05302, column 0.05276"
+  },
+  {
+   "label": "s_hold_up",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "latch step 299 by ['underside_low']; slip replay 0.01717, column 0.01654"
+  },
+  {
+   "label": "s_knock_06",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "latch step 75 by ['speed']; slip replay 0.00034, column 0.00027"
+  },
+  {
+   "label": "s_knock_08",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "latch step 74 by ['speed']; slip replay 0.01522, column 0.01519"
+  },
+  {
+   "label": "s_low_lift_corners",
+   "regraded": 0.25,
+   "reported": 0.25,
+   "agrees": true,
+   "note": "no latch, travel 9.87 cm; slip replay 0.00224, column 0.00111"
+  },
+  {
+   "label": "s_low_lift_faces",
+   "regraded": 0.25,
+   "reported": 0.25,
+   "agrees": true,
+   "note": "no latch, travel 8.16 cm; slip replay 0.00147, column 0.00052"
+  },
+  {
+   "label": "s_low_lift_hard",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "no latch, travel 2.50 cm; slip replay 0.00706, column 0.00676"
+  },
+  {
+   "label": "s_preplace",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "latch step 234 by ['underside_low', 'tilt']; slip replay 0.15691, column 0.15679"
+  },
+  {
+   "label": "s_tip",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "latch step 95 by ['speed']; slip replay 0.00137, column 0.00093"
+  },
+  {
+   "label": "stop_short",
+   "regraded": 0.25,
+   "reported": 0.25,
+   "agrees": true,
+   "note": "no latch, travel 12.90 cm; slip replay 0.00129, column 0.00015"
+  },
+  {
+   "label": "two_trials",
+   "regraded": 0.0,
+   "reported": 0.0,
+   "agrees": true,
+   "note": "both trials 0: latch step 646 by ['underside_low', 'tilt']; slip replay 0.01881, column 0.01810 (last trial shown; first latched step 226)"
+  }
+ ],
+ "all_agree": true,
+ "score_changing_mismatches": [
+  "Slip from rounded poses (regrade only, not the official score). The spec's slip formula and roller_block.py _slip_step are the same, and the code applies it to unrounded simulator floats; the saved column is that total. So 0.00171 is what the spec describes and 0.00244 is the same formula on poses rounded to 5 decimals. Per-step replay minus column differences peak at 2.3e-5 m in all 19 trials, under the 3.1e-5 m rounding bound, and the replay total exceeded the column in all 19 trials (by 0.028 to 1.187 mm; demo 0.735 mm). Neither total can change the demo's score: both are far under 2 cm. It could change a regrade: a replay of a trial whose true slip is near the limit can latch falsely. In a synthetic zero-slip roll over 2,400 steps (no simulator; a constructed trajectory, so an estimate) rounding added 15.3 mm, and a 19.0 mm true slip replayed as 22.0 mm. Official scoring is untouched because it never uses rounded values. In these 19 trials replay and column latched on the same step wherever slip latched (331 and 235) and every slip_column variant equals the base score. A regrade of a slow model trial should treat replay over 2 cm with column under 2 cm as rounding, not failure.",
+  "The 20 cm/s latch's velocity source is not stated in the spec; only the 1 cm/s clause says \"using the simulator's velocities\". The code uses the simulator's lin_vel, and the regrade follows it through the saved speed column. Finite differences of pose differ from that column by up to 8.8 cm/s (s_knock_06), s_low_lift_hard peaks at 16.47 by column and 10.47 by differences, and the latch moves one step later on s_knock_08 (74 to 75) and s_tip (95 to 96). A trial peaking just over 20 cm/s for a step could be 0 by the column and non-zero by a pose or video reading. Scores in these traces do not change. The regrade cannot check the velocity independently of the logger.",
+  "Regrade arm check: if one arm is absent from a whole arms.csv, the regrade only adds a note and can still pass the arm clause, because the expected links come from the arms named in the file. The code gives gap 0, not clear, which blocks 1.0. Not seen in any of these traces (2 arms, 8 links each, no missing links). Left unfixed because it was found after reading the code; the fix is to expect left_robot and right_robot explicitly.",
+  "Other thresholds read from rounded trace values, each a narrow window. Under count at the box edge: one measured flip, s_hold_up step 197, saved 2, replay 3, roller y 0.11969 against box edge 0.119691; no score changed. That can also alter a step's slip. Underside and goal-box edges: low_z differs by at most 2.04e-5 m. Arm gap at 5 cm: differs by at most 1.55e-5 m. Tilt at 5 and 10 degrees: about 0.01 degree from 4-decimal quaternions (calculated, not measured). Speed at 1 and 20 cm/s: 4-decimal columns, about 5e-5 m/s (calculated). A flip resets a hold or sets a latch, so it changes a score only if the trial sits on the edge. No such flip occurred: per-step score and held mismatches are 0 in all traces, and latch steps equal the first saved failed step in all traces.",
+  "Half-diagonal: the spec prints 10.8 cm; the code and regrade use the exact 10.77 cm. That is a 0.3% difference on the spin term of the 1 cm/s clause, so it can only reset a hold when motion sits right on 1 cm/s. The half_diag_10_8cm variant equals the base score in all traces."
+ ],
+ "other_mismatches": [
+  "An agent cannot prove its own independence. This regrade's lineage touches the task author: regrade.py was partly written by the agent that wrote the task code, this agent read that version and task text before running, the arm poses, hull vertices and velocity columns come from the task code's own logger, and the task prompt quoted the slip figures. The instruction not to read roller_block.py before producing numbers was followed according to this agent, and that claim is unverifiable from inside.",
+  "Coverage, not a mismatch: the 3.5 cm height latch never fired in any trace. Highest underside across all traces is 2.998 cm, so that latch is unverified by real traces and rests on synthetic_states, which were not regraded (5 states, no CSVs). Latches that did fire first: underside low (no_transfer, s_drag_full, s_hold_up, s_preplace, both two_trials trials), speed (s_knock_06, s_knock_08, s_tip), slip (s_hold_roller_full). Tilt over 10 degrees never fired first on its own: it came with or after another latch.",
+  "Coverage, not a mismatch: demo1 and demo2 traces and arms files are byte-identical, so they count as one result for checking the grader.",
+  "No trace_score column exists. The task named one; the traces have score, and reported values are the last step's score. For shortcuts this equals shortcuts.json in all 12. The framework's own score was not checked.",
+  "Replay figures quoted as if they were the slip: the SLIP_MAX_M comment in roller_block.py says the demo's is about 2.5 mm (column 1.71 mm, replay 2.44 mm), and shortcuts.json says s_drag_short slip is about 2 mm (column 0.92 mm, replay 2.11 mm). No scoring effect; the code comment is inside the frozen file.",
+  "README describes <run>_trace.csv, <run>_arms.csv and one vertex file; the runs use <run>.csv, <run>.arms.csv and <run>.hulls.csv. regrade.py now defaults to the latter.",
+  "Setup says the block's underside is 3.0 cm up and rollers lie on the table; the code spawns 1 mm and 0.5 mm higher to settle. Measured at the first evaluated step: underside about 2.997 cm, roller z 0.76249, block x 0.25006. Not scored, since evaluation starts after settling.",
+  "Regrade reads positions as the bounding-box centres logged by the adapter and builds boxes from pose and local size; the code reads the adapter's AABB directly. They agree within the rounding differences listed above, including for rollers.",
+  "Regrade fixes first evaluated step at environment step 11, per the spec at 20 Hz; the code takes whatever step the adapter first passes. Same on all runs. At another control rate the regrade could drop evaluated steps. It also resets a hold on a gap in the trace, which the code would not see; there are 0 gaps in all traces.",
+  "Edits to regrade.py before running: base speed now uses the simulator columns (it used finite differences for the 1 cm/s clause), start is the first evaluated step, the 2D half-diagonal variant is replaced, slip_column and fd_speed variants and a slip rounding check are added, plus --all mode and the current file names. numpy was not in the default python3, so it ran from a scratchpad venv."
+ ],
+ "traces": {
+  "arm_stays": {
+   "trace": "r3_1_arm_stays.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.5,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 860,
+     "first_trial_step": 11.0,
+     "last_trial_step": 871.0,
+     "steps": 861,
+     "step_gaps": 0,
+     "score": 0.5,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.5,
+      "half_diag_10_8cm": 0.5,
+      "slip_column": 0.5,
+      "underside_centre": 0.5,
+      "start_nominal": 0.5
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25173,
+       -0.14048,
+       0.81746
+      ],
+      "y_travel": 0.21048,
+      "box_x": [
+       0.18995,
+       0.31351
+      ],
+      "box_y": [
+       -0.22181,
+       -0.05915
+      ],
+      "tilt_deg": 0.0162,
+      "motion": 0.000362,
+      "under": 2,
+      "arm_gap": 0.001264,
+      "missing_links": [],
+      "underside": 0.02993,
+      "slip": 0.002783,
+      "clauses": {
+       "in_goal": true,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.2409,
+      "min_underside": 0.02974,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 748,
+      "tilt": 0,
+      "speed": 192,
+      "rollers": 0,
+      "arms": 673
+     },
+     "slip_rounding": {
+      "replay_total": 0.002783,
+      "column_total": 0.001715,
+      "difference": 0.001068,
+      "steps_with_replay_slip": 291,
+      "per_step_diff_max": 2e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.02666
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.0050949371144436775,
+       0.0030129815415445224
+      ],
+      "fd_minus_col_spin_range": [
+       -0.0771777981893907,
+       0.007192421308998335
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.999999999990898e-05,
+       1.8042826935515954e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.281281056699033e-05,
+       1.1329607510715371e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.0010693333333336747,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.5,
+   "agrees": true
+  },
+  "demo1": {
+   "trace": "r3_1_demo1.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 1.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 852,
+     "first_trial_step": 11.0,
+     "last_trial_step": 863.0,
+     "steps": 853,
+     "step_gaps": 0,
+     "score": 1.0,
+     "success_at": 852,
+     "steps_after_success": 0,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 21,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 1.0,
+      "half_diag_10_8cm": 1.0,
+      "slip_column": 1.0,
+      "underside_centre": 1.0,
+      "start_nominal": 1.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25172,
+       -0.13981,
+       0.81747
+      ],
+      "y_travel": 0.20981,
+      "box_x": [
+       0.18995,
+       0.31349
+      ],
+      "box_y": [
+       -0.22113,
+       -0.05849
+      ],
+      "tilt_deg": 0.0162,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.121936,
+      "missing_links": [],
+      "underside": 0.02994,
+      "slip": 0.002443,
+      "clauses": {
+       "in_goal": true,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.2409,
+      "min_underside": 0.02974,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 748,
+      "tilt": 0,
+      "speed": 192,
+      "rollers": 0,
+      "arms": 644
+     },
+     "slip_rounding": {
+      "replay_total": 0.002443,
+      "column_total": 0.001708,
+      "difference": 0.000735,
+      "steps_with_replay_slip": 247,
+      "per_step_diff_max": 2e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.026412
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.0050949371144436775,
+       0.0030129815415445224
+      ],
+      "fd_minus_col_spin_range": [
+       -0.0771777981893907,
+       0.007192421308998335
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.999999999990898e-05,
+       1.8042826935515954e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.281281056699033e-05,
+       1.5347365524873147e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.0007353333333340146,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 1.0,
+   "agrees": true
+  },
+  "demo2": {
+   "trace": "r3_1_demo2.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 1.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 852,
+     "first_trial_step": 11.0,
+     "last_trial_step": 863.0,
+     "steps": 853,
+     "step_gaps": 0,
+     "score": 1.0,
+     "success_at": 852,
+     "steps_after_success": 0,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 21,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 1.0,
+      "half_diag_10_8cm": 1.0,
+      "slip_column": 1.0,
+      "underside_centre": 1.0,
+      "start_nominal": 1.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25172,
+       -0.13981,
+       0.81747
+      ],
+      "y_travel": 0.20981,
+      "box_x": [
+       0.18995,
+       0.31349
+      ],
+      "box_y": [
+       -0.22113,
+       -0.05849
+      ],
+      "tilt_deg": 0.0162,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.121936,
+      "missing_links": [],
+      "underside": 0.02994,
+      "slip": 0.002443,
+      "clauses": {
+       "in_goal": true,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.2409,
+      "min_underside": 0.02974,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 748,
+      "tilt": 0,
+      "speed": 192,
+      "rollers": 0,
+      "arms": 644
+     },
+     "slip_rounding": {
+      "replay_total": 0.002443,
+      "column_total": 0.001708,
+      "difference": 0.000735,
+      "steps_with_replay_slip": 247,
+      "per_step_diff_max": 2e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.026412
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.0050949371144436775,
+       0.0030129815415445224
+      ],
+      "fd_minus_col_spin_range": [
+       -0.0771777981893907,
+       0.007192421308998335
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.999999999990898e-05,
+       1.8042826935515954e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.281281056699033e-05,
+       1.5347365524873147e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.0007353333333340146,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 1.0,
+   "agrees": true
+  },
+  "no_transfer": {
+   "trace": "r3_1_no_transfer.csv",
+   "dt": 0.050000000000000266,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 419,
+     "first_trial_step": 11.0,
+     "last_trial_step": 430.0,
+     "steps": 420,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 226,
+     "latch_cause": {
+      "clauses": [
+       "underside_low",
+       "tilt"
+      ],
+      "underside": 0.015005762876829642,
+      "tilt": 10.718787048173668,
+      "slip": 0.006226666666666806,
+      "speed": 0.0682
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25007,
+       -0.08873,
+       0.81374
+      ],
+      "y_travel": 0.15873,
+      "box_x": [
+       0.18998,
+       0.31016
+      ],
+      "box_y": [
+       -0.17784,
+       0.00038
+      ],
+      "tilt_deg": 21.2175,
+      "motion": 0.002522,
+      "under": 1,
+      "arm_gap": 0.0,
+      "missing_links": [],
+      "underside": -0.0,
+      "slip": 0.018867,
+      "clauses": {
+       "in_goal": false,
+       "tilt": false,
+       "speed": true,
+       "rollers": false,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 22.5704,
+      "min_underside": -1e-05,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 420,
+      "tilt": 195,
+      "speed": 130,
+      "rollers": 65,
+      "arms": 368
+     },
+     "slip_rounding": {
+      "replay_total": 0.018867,
+      "column_total": 0.018224,
+      "difference": 0.000643,
+      "steps_with_replay_slip": 199,
+      "per_step_diff_max": 1.9e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.012989
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.04031972923443532,
+       0.04113187493283804
+      ],
+      "fd_minus_col_spin_range": [
+       -0.27260480208034,
+       1.3936087903501801
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.999999999990898e-05,
+       1.5989586321873972e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.3949895450793455e-05,
+       1.3854592107061508e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 194,
+      "slip_col_minus_recomputed_range": [
+       -0.0006426666666667948,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true
+  },
+  "s_drag_full": {
+   "trace": "r3_1_s_drag_full.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 459,
+     "first_trial_step": 11.0,
+     "last_trial_step": 470.0,
+     "steps": 460,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 223,
+     "latch_cause": {
+      "clauses": [
+       "underside_low"
+      ],
+      "underside": 0.019468358896972515,
+      "tilt": 6.214155488133063,
+      "slip": 0.008500000000000296,
+      "speed": 0.0323
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.24949,
+       -0.12522,
+       0.80865
+      ],
+      "y_travel": 0.19522,
+      "box_x": [
+       0.1893,
+       0.30968
+      ],
+      "box_y": [
+       -0.21343,
+       -0.03701
+      ],
+      "tilt_deg": 16.5584,
+      "motion": 0.0,
+      "under": 1,
+      "arm_gap": 0.116209,
+      "missing_links": [],
+      "underside": 0.0,
+      "slip": 0.01752,
+      "clauses": {
+       "in_goal": true,
+       "tilt": false,
+       "speed": true,
+       "rollers": false,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 18.5064,
+      "min_underside": -1e-05,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 297,
+      "tilt": 238,
+      "speed": 164,
+      "rollers": 241,
+      "arms": 334
+     },
+     "slip_rounding": {
+      "replay_total": 0.01752,
+      "column_total": 0.01687,
+      "difference": 0.00065,
+      "steps_with_replay_slip": 209,
+      "per_step_diff_max": 2e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.014229
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.030654421512224347,
+       0.04178299032105774
+      ],
+      "fd_minus_col_spin_range": [
+       -1.4169164565100216,
+       1.4051315265312605
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.8064915838222895e-05,
+       1.5921061360502087e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -6.657687015007574e-06,
+       2.1631694509691114e-06
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 237,
+      "slip_col_minus_recomputed_range": [
+       -0.0006520000000003225,
+       6.9999999999795364e-06
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "s_drag_short": {
+   "trace": "r3_1_s_drag_short.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.25,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 459,
+     "first_trial_step": 11.0,
+     "last_trial_step": 470.0,
+     "steps": 460,
+     "step_gaps": 0,
+     "score": 0.25,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.25,
+      "half_diag_10_8cm": 0.25,
+      "slip_column": 0.25,
+      "underside_centre": 0.25,
+      "start_nominal": 0.25
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.2503,
+       0.00192,
+       0.81747
+      ],
+      "y_travel": 0.06808,
+      "box_x": [
+       0.18991,
+       0.31069
+      ],
+      "box_y": [
+       -0.07837,
+       0.08221
+      ],
+      "tilt_deg": 0.0115,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.140341,
+      "missing_links": [],
+      "underside": 0.02996,
+      "slip": 0.00211,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.3102,
+      "min_underside": 0.02957,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 460,
+      "tilt": 0,
+      "speed": 101,
+      "rollers": 0,
+      "arms": 328
+     },
+     "slip_rounding": {
+      "replay_total": 0.00211,
+      "column_total": 0.000923,
+      "difference": 0.001187,
+      "steps_with_replay_slip": 269,
+      "per_step_diff_max": 2e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.014229
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.014698780533143479,
+       0.0056999999999996186
+      ],
+      "fd_minus_col_spin_range": [
+       -0.1718294416348762,
+       0.03478998749311042
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.806933513803788e-05,
+       1.592627902557986e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -9.161372215002461e-06,
+       1.2638370270365296e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.0011870000000004071,
+       6.9999999999795364e-06
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.25,
+   "agrees": true,
+   "shortcuts_json": 0.25
+  },
+  "s_hold_roller_13": {
+   "trace": "r3_1_s_hold_roller_13.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 487,
+     "first_trial_step": 11.0,
+     "last_trial_step": 498.0,
+     "steps": 488,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.2486,
+       0.03519,
+       0.81747
+      ],
+      "y_travel": 0.03481,
+      "box_x": [
+       0.18181,
+       0.31539
+      ],
+      "box_y": [
+       -0.04977,
+       0.12015
+      ],
+      "tilt_deg": 0.0115,
+      "motion": 0.023074,
+      "under": 3,
+      "arm_gap": 0.0,
+      "missing_links": [],
+      "underside": 0.02995,
+      "slip": 0.01311,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": false,
+       "rollers": true,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.0802,
+      "min_underside": 0.02987,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 488,
+      "tilt": 0,
+      "speed": 365,
+      "rollers": 0,
+      "arms": 426
+     },
+     "slip_rounding": {
+      "replay_total": 0.01311,
+      "column_total": 0.012953,
+      "difference": 0.000157,
+      "steps_with_replay_slip": 342,
+      "per_step_diff_max": 2.2e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.015097
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.014593753048781327,
+       0.00520238061503985
+      ],
+      "fd_minus_col_spin_range": [
+       -0.6063651419835052,
+       0.0
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.761044897397035e-05,
+       1.6611183911718896e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.3789763823601753e-05,
+       0.0
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.0002713333333333827,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "s_hold_roller_full": {
+   "trace": "r3_1_s_hold_roller_full.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 487,
+     "first_trial_step": 11.0,
+     "last_trial_step": 498.0,
+     "steps": 488,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 331,
+     "latch_cause": {
+      "clauses": [
+       "slip"
+      ],
+      "underside": 0.02815380318260452,
+      "tilt": 3.6226843514818166,
+      "slip": 0.020436666666666863,
+      "speed": 0.0297
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25247,
+       -0.00966,
+       0.81745
+      ],
+      "y_travel": 0.07966,
+      "box_x": [
+       0.1902,
+       0.31474
+      ],
+      "box_y": [
+       -0.09136,
+       0.07204
+      ],
+      "tilt_deg": 0.0256,
+      "motion": 0.031345,
+      "under": 2,
+      "arm_gap": 0.0,
+      "missing_links": [],
+      "underside": 0.02991,
+      "slip": 0.053017,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": false,
+       "rollers": true,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 14.0627,
+      "min_underside": 0.02052,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 488,
+      "tilt": 79,
+      "speed": 366,
+      "rollers": 0,
+      "arms": 426
+     },
+     "slip_rounding": {
+      "replay_total": 0.053017,
+      "column_total": 0.05276,
+      "difference": 0.000257,
+      "steps_with_replay_slip": 335,
+      "per_step_diff_max": 2.3e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.015097
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.023222907371918757,
+       0.013854862365955848
+      ],
+      "fd_minus_col_spin_range": [
+       -0.6593757354687741,
+       0.25976511699843696
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.8024443080633112e-05,
+       1.5870459716404994e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.3789763823601753e-05,
+       0.0
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 157,
+      "slip_col_minus_recomputed_range": [
+       -0.00027833333333346334,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "s_hold_up": {
+   "trace": "r3_1_s_hold_up.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 469,
+     "first_trial_step": 11.0,
+     "last_trial_step": 480.0,
+     "steps": 470,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 299,
+     "latch_cause": {
+      "clauses": [
+       "underside_low"
+      ],
+      "underside": 0.019981851376218773,
+      "tilt": 7.074764150341596,
+      "slip": 0.003673333333333609,
+      "speed": 0.0214
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25046,
+       -0.08526,
+       0.81383
+      ],
+      "y_travel": 0.15526,
+      "box_x": [
+       0.18972,
+       0.3112
+      ],
+      "box_y": [
+       -0.17482,
+       0.0043
+      ],
+      "tilt_deg": 21.1364,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.0,
+      "missing_links": [],
+      "underside": 0.0,
+      "slip": 0.017173,
+      "clauses": {
+       "in_goal": false,
+       "tilt": false,
+       "speed": true,
+       "rollers": true,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 21.4984,
+      "min_underside": -1e-05,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 470,
+      "tilt": 172,
+      "speed": 171,
+      "rollers": 0,
+      "arms": 410
+     },
+     "slip_rounding": {
+      "replay_total": 0.017173,
+      "column_total": 0.01654,
+      "difference": 0.000633,
+      "steps_with_replay_slip": 200,
+      "per_step_diff_max": 1.8e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.014539
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.03357684537882743,
+       0.06196224108915256
+      ],
+      "fd_minus_col_spin_range": [
+       -0.3782015244924545,
+       0.9919060831998885
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.782900839486512e-05,
+       1.8010530258627533e-05
+      ],
+      "under_mismatch_steps": [
+       197
+      ],
+      "under_mismatch_count": 1,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.3824976353010547e-05,
+       1.233484745879294e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 171,
+      "slip_col_minus_recomputed_range": [
+       -0.0006523333333336139,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "s_knock_06": {
+   "trace": "r3_1_s_knock_06.csv",
+   "dt": 0.04999999999999982,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 187,
+     "first_trial_step": 11.0,
+     "last_trial_step": 198.0,
+     "steps": 188,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 75,
+     "latch_cause": {
+      "clauses": [
+       "speed"
+      ],
+      "underside": 0.02996999999999994,
+      "tilt": 0.0,
+      "slip": 0.00016333333333336253,
+      "speed": 0.2701
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25005,
+       -0.036,
+       0.81745
+      ],
+      "y_travel": 0.106,
+      "box_x": [
+       0.19003,
+       0.31007
+      ],
+      "box_y": [
+       -0.11604,
+       0.04404
+      ],
+      "tilt_deg": 0.0362,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.195305,
+      "missing_links": [],
+      "underside": 0.02989,
+      "slip": 0.000343,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.0769,
+      "min_underside": 0.02984,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.001966
+     },
+     "steps_failing_clause": {
+      "in_goal": 188,
+      "tilt": 0,
+      "speed": 20,
+      "rollers": 0,
+      "arms": 23
+     },
+     "slip_rounding": {
+      "replay_total": 0.000343,
+      "column_total": 0.000267,
+      "difference": 7.6e-05,
+      "steps_with_replay_slip": 26,
+      "per_step_diff_max": 1e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.005797
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.08759905123766615,
+       0.021201275315780366
+      ],
+      "fd_minus_col_spin_range": [
+       -0.12288750758702083,
+       0.004123803101732576
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.0024058788249413e-05,
+       1.399679736013848e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.3331143007763724e-05,
+       8.365314530578427e-06
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 113,
+      "slip_col_minus_recomputed_range": [
+       -7.633333333341072e-05,
+       2.666666666637467e-06
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "s_knock_08": {
+   "trace": "r3_1_s_knock_08.csv",
+   "dt": 0.04999999999999982,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 187,
+     "first_trial_step": 11.0,
+     "last_trial_step": 198.0,
+     "steps": 188,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 74,
+     "latch_cause": {
+      "clauses": [
+       "speed"
+      ],
+      "underside": 0.02996999999999994,
+      "tilt": 0.0,
+      "slip": 9.666666666666851e-05,
+      "speed": 0.2693
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.24957,
+       -0.08476,
+       0.81452
+      ],
+      "y_travel": 0.15476,
+      "box_x": [
+       0.18915,
+       0.30999
+      ],
+      "box_y": [
+       -0.17419,
+       0.00467
+      ],
+      "tilt_deg": 21.8827,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.141141,
+      "missing_links": [],
+      "underside": -1e-05,
+      "slip": 0.01522,
+      "clauses": {
+       "in_goal": false,
+       "tilt": false,
+       "speed": true,
+       "rollers": true,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 22.2086,
+      "min_underside": -1e-05,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.001637
+     },
+     "steps_failing_clause": {
+      "in_goal": 188,
+      "tilt": 95,
+      "speed": 28,
+      "rollers": 0,
+      "arms": 22
+     },
+     "slip_rounding": {
+      "replay_total": 0.01522,
+      "column_total": 0.015192,
+      "difference": 2.8e-05,
+      "steps_with_replay_slip": 30,
+      "per_step_diff_max": 1.1e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.005797
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.08414348542368257,
+       0.02740023654634066
+      ],
+      "fd_minus_col_spin_range": [
+       -0.2558764394295905,
+       1.0479492714995549
+      ],
+      "low_z_col_minus_corner_range": [
+       -9.99999999995449e-06,
+       1.2005542956550208e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -8.326413294651447e-06,
+       1.2780635340929603e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 114,
+      "slip_col_minus_recomputed_range": [
+       -2.900000000000645e-05,
+       5.999999999989521e-06
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "s_low_lift_corners": {
+   "trace": "r3_1_s_low_lift_corners.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.25,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 469,
+     "first_trial_step": 11.0,
+     "last_trial_step": 480.0,
+     "steps": 470,
+     "step_gaps": 0,
+     "score": 0.25,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.25,
+      "half_diag_10_8cm": 0.25,
+      "slip_column": 0.25,
+      "underside_centre": 0.25,
+      "start_nominal": 0.25
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25037,
+       -0.02865,
+       0.81746
+      ],
+      "y_travel": 0.09865,
+      "box_x": [
+       0.18955,
+       0.31119
+      ],
+      "box_y": [
+       -0.10928,
+       0.05198
+      ],
+      "tilt_deg": 0.0362,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.123316,
+      "missing_links": [],
+      "underside": 0.0299,
+      "slip": 0.00224,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.1087,
+      "min_underside": 0.02973,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 470,
+      "tilt": 0,
+      "speed": 208,
+      "rollers": 0,
+      "arms": 325
+     },
+     "slip_rounding": {
+      "replay_total": 0.00224,
+      "column_total": 0.001111,
+      "difference": 0.001129,
+      "steps_with_replay_slip": 293,
+      "per_step_diff_max": 2e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.014539
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.01437017787186504,
+       0.010714026458704031
+      ],
+      "fd_minus_col_spin_range": [
+       -0.31304314604559996,
+       0.004766297838057033
+      ],
+      "low_z_col_minus_corner_range": [
+       -2.0406793259986067e-05,
+       1.99999963998998e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.0822291268520329e-05,
+       1.0501152436823147e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.001129000000000411,
+       5.666666666655646e-06
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.25,
+   "agrees": true,
+   "shortcuts_json": 0.25
+  },
+  "s_low_lift_faces": {
+   "trace": "r3_1_s_low_lift_faces.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.25,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 469,
+     "first_trial_step": 11.0,
+     "last_trial_step": 480.0,
+     "steps": 470,
+     "step_gaps": 0,
+     "score": 0.25,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.25,
+      "half_diag_10_8cm": 0.25,
+      "slip_column": 0.25,
+      "underside_centre": 0.25,
+      "start_nominal": 0.25
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25061,
+       -0.01164,
+       0.81746
+      ],
+      "y_travel": 0.08164,
+      "box_x": [
+       0.1899,
+       0.31132
+      ],
+      "box_y": [
+       -0.09217,
+       0.06889
+      ],
+      "tilt_deg": 0.0162,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.078111,
+      "missing_links": [],
+      "underside": 0.02993,
+      "slip": 0.001473,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 2.2691,
+      "min_underside": 0.02984,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 470,
+      "tilt": 0,
+      "speed": 190,
+      "rollers": 0,
+      "arms": 336
+     },
+     "slip_rounding": {
+      "replay_total": 0.001473,
+      "column_total": 0.000517,
+      "difference": 0.000956,
+      "steps_with_replay_slip": 260,
+      "per_step_diff_max": 1.9e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.014539
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.03357684537882743,
+       0.034445821883859584
+      ],
+      "fd_minus_col_spin_range": [
+       -0.3782015244924545,
+       0.4110571469853469
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.6020996146393074e-05,
+       1.80101473484795e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.3824976353010547e-05,
+       1.233484745879294e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.0009563333333338708,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.25,
+   "agrees": true,
+   "shortcuts_json": 0.25
+  },
+  "s_low_lift_hard": {
+   "trace": "r3_1_s_low_lift_hard.csv",
+   "dt": 0.05000000000000071,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 469,
+     "first_trial_step": 11.0,
+     "last_trial_step": 480.0,
+     "steps": 470,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25309,
+       0.04495,
+       0.81748
+      ],
+      "y_travel": 0.02505,
+      "box_x": [
+       0.18927,
+       0.31691
+      ],
+      "box_y": [
+       -0.03788,
+       0.12778
+      ],
+      "tilt_deg": 0.0162,
+      "motion": 0.0,
+      "under": 3,
+      "arm_gap": 0.090678,
+      "missing_links": [],
+      "underside": 0.02995,
+      "slip": 0.00706,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 5.124,
+      "min_underside": 0.02953,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 470,
+      "tilt": 1,
+      "speed": 121,
+      "rollers": 0,
+      "arms": 332
+     },
+     "slip_rounding": {
+      "replay_total": 0.00706,
+      "column_total": 0.006761,
+      "difference": 0.000299,
+      "steps_with_replay_slip": 147,
+      "per_step_diff_max": 1.6e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.014539
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.06001265597026624,
+       0.00902459212413239
+      ],
+      "fd_minus_col_spin_range": [
+       -0.6621062141504472,
+       0.06664037868060227
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.7542281948945693e-05,
+       1.7871236746236363e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.4322165447090696e-05,
+       1.548321681874021e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.00029900000000006224,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "s_preplace": {
+   "trace": "r3_1_s_preplace.csv",
+   "dt": 0.050000000000000044,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 1354,
+     "first_trial_step": 11.0,
+     "last_trial_step": 1365.0,
+     "steps": 1355,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 234,
+     "latch_cause": {
+      "clauses": [
+       "underside_low",
+       "tilt"
+      ],
+      "underside": 0.017466547518684594,
+      "tilt": 14.060877887171225,
+      "slip": 0.018620000000000015,
+      "speed": 0.0579
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.24601,
+       -0.21718,
+       0.80339
+      ],
+      "y_travel": 0.28718,
+      "box_x": [
+       0.15437,
+       0.33765
+      ],
+      "box_y": [
+       -0.32125,
+       -0.11311
+      ],
+      "tilt_deg": 12.1063,
+      "motion": 0.0,
+      "under": 1,
+      "arm_gap": 0.060974,
+      "missing_links": [],
+      "underside": -0.0,
+      "slip": 0.15691,
+      "clauses": {
+       "in_goal": false,
+       "tilt": false,
+       "speed": true,
+       "rollers": false,
+       "arms": true
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 42.3218,
+      "min_underside": -1e-05,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 1314,
+      "tilt": 1104,
+      "speed": 233,
+      "rollers": 306,
+      "arms": 1056
+     },
+     "slip_rounding": {
+      "replay_total": 0.15691,
+      "column_total": 0.15679,
+      "difference": 0.00012,
+      "steps_with_replay_slip": 336,
+      "per_step_diff_max": 2.3e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.041974
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.08608061136391294,
+       0.040302438988117764
+      ],
+      "fd_minus_col_spin_range": [
+       -1.0311501178403195,
+       3.273700431612301
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.0748495494761201e-05,
+       1.7998799160090506e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.3651684913833922e-05,
+       8.107115641982354e-06
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 1121,
+      "slip_col_minus_recomputed_range": [
+       -0.00013899999999980595,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "s_tip": {
+   "trace": "r3_1_s_tip.csv",
+   "dt": 0.04999999999999982,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 190,
+     "first_trial_step": 11.0,
+     "last_trial_step": 201.0,
+     "steps": 191,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 95,
+     "latch_cause": {
+      "clauses": [
+       "speed"
+      ],
+      "underside": 0.02991400800671906,
+      "tilt": 0.032411385871144636,
+      "slip": 0.0001866666666667496,
+      "speed": 0.216
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25009,
+       0.08321,
+       0.81747
+      ],
+      "y_travel": -0.01321,
+      "box_x": [
+       0.19001,
+       0.31017
+      ],
+      "box_y": [
+       0.00315,
+       0.16327
+      ],
+      "tilt_deg": 0.0256,
+      "motion": 0.002651,
+      "under": 3,
+      "arm_gap": 0.0,
+      "missing_links": [],
+      "underside": 0.02993,
+      "slip": 0.001373,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.2636,
+      "min_underside": 0.0298,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 191,
+      "tilt": 0,
+      "speed": 40,
+      "rollers": 0,
+      "arms": 141
+     },
+     "slip_rounding": {
+      "replay_total": 0.001373,
+      "column_total": 0.000933,
+      "difference": 0.00044,
+      "steps_with_replay_slip": 88,
+      "per_step_diff_max": 1.9e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.00589
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.0803792813799151,
+       0.028300141642989024
+      ],
+      "fd_minus_col_spin_range": [
+       -0.12295572817798726,
+       0.0507950115730831
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.4010418476595454e-05,
+       1.7998399440055657e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -5.624032139467383e-06,
+       0.0
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 96,
+      "slip_col_minus_recomputed_range": [
+       -0.00044233333333348196,
+       4.999999999988104e-06
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true,
+   "shortcuts_json": 0.0
+  },
+  "stop_short": {
+   "trace": "r3_1_stop_short.csv",
+   "dt": 0.050000000000000266,
+   "hold_needed": 21,
+   "trials": 1,
+   "score": 0.25,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 419,
+     "first_trial_step": 11.0,
+     "last_trial_step": 430.0,
+     "steps": 420,
+     "step_gaps": 0,
+     "score": 0.25,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": null,
+     "latch_cause": null,
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.25,
+      "half_diag_10_8cm": 0.25,
+      "slip_column": 0.25,
+      "underside_centre": 0.25,
+      "start_nominal": 0.25
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25019,
+       -0.059,
+       0.81743
+      ],
+      "y_travel": 0.129,
+      "box_x": [
+       0.19017,
+       0.31021
+      ],
+      "box_y": [
+       -0.13906,
+       0.02106
+      ],
+      "tilt_deg": 0.0697,
+      "motion": 0.0,
+      "under": 2,
+      "arm_gap": 0.030074,
+      "missing_links": [],
+      "underside": 0.02982,
+      "slip": 0.001293,
+      "clauses": {
+       "in_goal": false,
+       "tilt": true,
+       "speed": true,
+       "rollers": true,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 0.6646,
+      "min_underside": 0.02928,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.002291
+     },
+     "steps_failing_clause": {
+      "in_goal": 420,
+      "tilt": 0,
+      "speed": 159,
+      "rollers": 0,
+      "arms": 368
+     },
+     "slip_rounding": {
+      "replay_total": 0.001293,
+      "column_total": 0.00015,
+      "difference": 0.001143,
+      "steps_with_replay_slip": 237,
+      "per_step_diff_max": 2e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.012989
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.0022937530487812524,
+       0.003020074626606365
+      ],
+      "fd_minus_col_spin_range": [
+       -0.1062000002330212,
+       0.2038324836116862
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.999999999990898e-05,
+       1.7998799160090506e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.2350438311381495e-05,
+       7.984015702581105e-06
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 0,
+      "slip_col_minus_recomputed_range": [
+       -0.001143333333333633,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.25,
+   "agrees": true
+  },
+  "two_trials": {
+   "trace": "r3_1_two_trials.csv",
+   "dt": 0.050000000000000266,
+   "hold_needed": 21,
+   "trials": 2,
+   "score": 0.0,
+   "notes": [],
+   "results": [
+    {
+     "first_step": 0,
+     "last_step": 419,
+     "first_trial_step": 11.0,
+     "last_trial_step": 430.0,
+     "steps": 420,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 226,
+     "latch_cause": {
+      "clauses": [
+       "underside_low",
+       "tilt"
+      ],
+      "underside": 0.015005762876829642,
+      "tilt": 10.718787048173668,
+      "slip": 0.006226666666666806,
+      "speed": 0.0682
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25007,
+       -0.08873,
+       0.81374
+      ],
+      "y_travel": 0.15873,
+      "box_x": [
+       0.18998,
+       0.31016
+      ],
+      "box_y": [
+       -0.17784,
+       0.00038
+      ],
+      "tilt_deg": 21.2175,
+      "motion": 0.002522,
+      "under": 1,
+      "arm_gap": 0.0,
+      "missing_links": [],
+      "underside": -0.0,
+      "slip": 0.018867,
+      "clauses": {
+       "in_goal": false,
+       "tilt": false,
+       "speed": true,
+       "rollers": false,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 22.5704,
+      "min_underside": -1e-05,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 420,
+      "tilt": 195,
+      "speed": 130,
+      "rollers": 65,
+      "arms": 368
+     },
+     "slip_rounding": {
+      "replay_total": 0.018867,
+      "column_total": 0.018224,
+      "difference": 0.000643,
+      "steps_with_replay_slip": 199,
+      "per_step_diff_max": 1.9e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.012989
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.04031972923443532,
+       0.04113187493283804
+      ],
+      "fd_minus_col_spin_range": [
+       -0.27260480208034,
+       1.3936087903501801
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.999999999990898e-05,
+       1.5989586321873972e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.3949895450793455e-05,
+       1.3854592107061508e-05
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 194,
+      "slip_col_minus_recomputed_range": [
+       -0.0006426666666667948,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    },
+    {
+     "first_step": 420,
+     "last_step": 839,
+     "first_trial_step": 11.0,
+     "last_trial_step": 430.0,
+     "steps": 420,
+     "step_gaps": 0,
+     "score": 0.0,
+     "success_at": null,
+     "steps_after_success": null,
+     "latched_at": 646,
+     "latch_cause": {
+      "clauses": [
+       "underside_low",
+       "tilt"
+      ],
+      "underside": 0.015311204085635799,
+      "tilt": 10.488461744429756,
+      "slip": 0.0061566666666668796,
+      "speed": 0.0666
+     },
+     "max_hold": 0,
+     "hold_needed": 21,
+     "variants": {
+      "fd_speed": 0.0,
+      "half_diag_10_8cm": 0.0,
+      "slip_column": 0.0,
+      "underside_centre": 0.0,
+      "start_nominal": 0.0
+     },
+     "start_y": 0.07,
+     "final": {
+      "pos": [
+       0.25016,
+       -0.08876,
+       0.81381
+      ],
+      "y_travel": 0.15876,
+      "box_x": [
+       0.19013,
+       0.31019
+      ],
+      "box_y": [
+       -0.17785,
+       0.00033
+      ],
+      "tilt_deg": 21.2759,
+      "motion": 0.002476,
+      "under": 1,
+      "arm_gap": 0.0,
+      "missing_links": [],
+      "underside": 0.0,
+      "slip": 0.018807,
+      "clauses": {
+       "in_goal": false,
+       "tilt": false,
+       "speed": true,
+       "rollers": false,
+       "arms": false
+      }
+     },
+     "extremes": {
+      "max_tilt_deg": 22.5255,
+      "min_underside": -2e-05,
+      "max_underside": 0.02998,
+      "min_arm_gap": 0.0
+     },
+     "steps_failing_clause": {
+      "in_goal": 420,
+      "tilt": 195,
+      "speed": 130,
+      "rollers": 65,
+      "arms": 368
+     },
+     "slip_rounding": {
+      "replay_total": 0.018807,
+      "column_total": 0.018102,
+      "difference": 0.000705,
+      "steps_with_replay_slip": 214,
+      "per_step_diff_max": 1.9e-05,
+      "per_step_rounding_bound": 3.1e-05,
+      "steps_over_bound": 0,
+      "total_rounding_bound": 0.012989
+     },
+     "column_checks": {
+      "fd_minus_col_speed_range": [
+       -0.0400031729766719,
+       0.035922388462780175
+      ],
+      "fd_minus_col_spin_range": [
+       -0.2670193045820697,
+       1.3923592211277902
+      ],
+      "low_z_col_minus_corner_range": [
+       -1.999999999990898e-05,
+       1.7975958969129735e-05
+      ],
+      "under_mismatch_steps": [],
+      "under_mismatch_count": 0,
+      "arm_gap_col_minus_recomputed_range": [
+       -1.0267313846994836e-05,
+       9.342977960055242e-06
+      ],
+      "held_mismatch_steps": [],
+      "held_mismatch_count": 0,
+      "failed_col_steps": 194,
+      "slip_col_minus_recomputed_range": [
+       -0.0007056666666669861,
+       0.0
+      ],
+      "score_mismatch_steps": [],
+      "score_mismatch_count": 0
+     }
+    }
+   ],
+   "reported": 0.0,
+   "agrees": true
+  }
+ }
+}

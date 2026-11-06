@@ -1,0 +1,118 @@
+{
+ "task_sha256": "9473dfe0024f2c410567aaf5fd813234e95881c86185693f03ae6d3548a700f3",
+ "summary": "12 scripted attempts in the simulator: none reached 0.5 or 1.0; three reached 0.25, each by rolling the block at least 6 cm, which is the intended partial credit.",
+ "limit": "No scripted pinch actually raised the block, so a real low carry was never simulated. The rule's handling of a carry is shown only by the synthetic states below. These attempts are the ones tried, not all possible strategies.",
+ "simulated": [
+  {
+   "strategy": "low lift, pinching the end faces",
+   "trace": "traces/r3_1_s_low_lift_faces.csv",
+   "knobs": "LIFT_M=0.03 SQUEEZE_M=0.09",
+   "score": 0.25,
+   "reading": "The grip did not raise the block: underside stayed 2.985-2.998 cm. It was pushed and rolled 8.2 cm, so 0.25 is the intended partial credit."
+  },
+  {
+   "strategy": "low lift, hard squeeze",
+   "trace": "traces/r3_1_s_low_lift_hard.csv",
+   "knobs": "LIFT_M=0.05 SQUEEZE_M=0.14",
+   "score": 0.0,
+   "reading": "No lift; block ended 2.5 cm along."
+  },
+  {
+   "strategy": "low lift, pinching corners",
+   "trace": "traces/r3_1_s_low_lift_corners.csv",
+   "knobs": "LIFT_M=0.03 PINCH_STYLE=1",
+   "score": 0.25,
+   "reading": "No lift; pushed and rolled 9.9 cm, intended partial credit."
+  },
+  {
+   "strategy": "hold the block up and carry",
+   "trace": "traces/r3_1_s_hold_up.csv",
+   "knobs": "LIFT_M=0.03 SQUEEZE_M=0.09",
+   "score": 0.0,
+   "reading": "Block ran off its rollers and latched: underside under 2 cm."
+  },
+  {
+   "strategy": "place rollers in the zone first, then bring the block",
+   "trace": "traces/r3_1_s_preplace.csv",
+   "knobs": "",
+   "score": 0.0,
+   "reading": "Latched: underside under 2 cm at step 234."
+  },
+  {
+   "strategy": "drag rollers along with the block, full push",
+   "trace": "traces/r3_1_s_drag_full.csv",
+   "knobs": "",
+   "score": 0.0,
+   "reading": "Latched: underside under 2 cm."
+  },
+  {
+   "strategy": "drag rollers, short push",
+   "trace": "traces/r3_1_s_drag_short.csv",
+   "knobs": "PUSH_M=0.07",
+   "score": 0.25,
+   "reading": "Rollers moved half as far as the block (slip about 2 mm): this is rolling, so 0.25 is intended."
+  },
+  {
+   "strategy": "slide over a held roller, full push",
+   "trace": "traces/r3_1_s_hold_roller_full.csv",
+   "knobs": "",
+   "score": 0.0,
+   "reading": "Latched by the slip rule at step 331 (replayed)."
+  },
+  {
+   "strategy": "slide over a held roller, 13 cm",
+   "trace": "traces/r3_1_s_hold_roller_13.csv",
+   "knobs": "PUSH_M=0.13",
+   "score": 0.0,
+   "reading": "Block moved 3.5 cm only."
+  },
+  {
+   "strategy": "knock the block, 6 cm strike",
+   "trace": "traces/r3_1_s_knock_06.csv",
+   "knobs": "KNOCK_M=0.06",
+   "score": 0.0,
+   "reading": "Latched by the 20 cm/s speed rule at step 75. Under the previous revision it scored 0.25."
+  },
+  {
+   "strategy": "knock the block, 8 cm strike",
+   "trace": "traces/r3_1_s_knock_08.csv",
+   "knobs": "KNOCK_M=0.08",
+   "score": 0.0,
+   "reading": "Latched by the speed rule at step 74."
+  },
+  {
+   "strategy": "tip the block",
+   "trace": "traces/r3_1_s_tip.csv",
+   "knobs": "",
+   "score": 0.0,
+   "reading": "Latched by the speed rule at step 95."
+  }
+ ],
+ "synthetic_states": [
+  {
+   "state": "low lift 2 mm, 8 cm over stationary rollers, set down, arms away",
+   "previous_revision_094204e083f4": 0.25,
+   "this_revision": 0.0
+  },
+  {
+   "state": "held up 4 mm in the zone, arms touching, trial ends",
+   "previous_revision_094204e083f4": 0.5,
+   "this_revision": 0.0
+  },
+  {
+   "state": "rollers placed in the zone first, block carried over and set down",
+   "previous_revision_094204e083f4": 1.0,
+   "this_revision": 0.0
+  },
+  {
+   "state": "all rollers dragged with the block into the zone",
+   "previous_revision_094204e083f4": 1.0,
+   "this_revision": 0.0
+  },
+  {
+   "state": "block slid over stationary rollers into the zone (no 2 under at end)",
+   "previous_revision_094204e083f4": 0.5,
+   "this_revision": 0.0
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+f_arm_stays | start 2026-11-08T14:34:49Z 6ea0933566e4 mode=arm_stays steps=800 env=PUSH_TO=0.60  | exit 0 end 2026-11-08T14:35:50Z | task_score: 0.5
+f_demo1 | start 2026-11-08T14:33:02Z 6ea0933566e4 mode=full steps=800 env= | exit 0 end 2026-11-08T14:33:56Z | task_score: 1
+f_demo2 | start 2026-11-08T14:33:56Z 6ea0933566e4 mode=full steps=800 env= | exit 0 end 2026-11-08T14:34:49Z | task_score: 1
+f_hold_ramp36 | start 2026-11-08T17:04:54Z 6ea0933566e4 mode=arm_stays steps=800 env=PUSH_TO=0.36  | exit 0 end 2026-11-08T17:05:37Z | task_score: 1
+f_hold_ramp38 | start 2026-11-08T17:05:37Z 6ea0933566e4 mode=arm_stays steps=800 env=PUSH_TO=0.38  | exit 0 end 2026-11-08T17:06:20Z | task_score: 1
+f_hold_ramp | start 2026-11-08T14:35:50Z 6ea0933566e4 mode=arm_stays steps=800 env=PUSH_TO=0.40  | exit 0 end 2026-11-08T14:36:33Z | task_score: 1
+f_knock04 | start 2026-11-08T14:38:17Z 6ea0933566e4 mode=knock steps=600 env= | exit 0 end 2026-11-08T14:38:47Z | task_score: 0
+f_knock08 | start 2026-11-08T14:38:47Z 6ea0933566e4 mode=knock steps=600 env=KNOCK_V=0.8 KNOCK_M=0.12  | exit 0 end 2026-11-08T14:39:16Z | task_score: 0
+f_lift03 | start 2026-11-08T14:39:17Z 6ea0933566e4 mode=lift steps=800 env= | exit 0 end 2026-11-08T14:40:20Z | task_score: 0
+f_lift08 | start 2026-11-08T14:40:21Z 6ea0933566e4 mode=lift steps=800 env=LIFT_M=0.06 SQUEEZE_M=0.08  | exit 0 end 2026-11-08T14:41:26Z | task_score: 0
+f_one_arm | start 2026-11-08T14:36:33Z 6ea0933566e4 mode=one_arm steps=800 env= | exit 0 end 2026-11-08T14:37:25Z | task_score: 1
+f_one_end | start 2026-11-08T14:37:25Z 6ea0933566e4 mode=one_end steps=800 env= | exit 0 end 2026-11-08T14:38:17Z | task_score: 1

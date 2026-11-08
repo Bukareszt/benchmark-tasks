@@ -1,0 +1,2 @@
+started 2026-11-08T17:27:20Z task=6ea0933566e44d98c1e6b393f848afdf6d7092384c7c37f6066cbad77df18e55 cap_usd=1 trials=1 max_steps=2400 expected_chunks=50
+ended 2026-11-08T17:31:20Z exit=0

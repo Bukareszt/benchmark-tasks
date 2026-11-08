@@ -1,0 +1,26 @@
+{
+ "trace": "f_knock04.csv",
+ "dt": 0.05,
+ "trials": [
+  {
+   "first_step": 0,
+   "last_step": 206,
+   "steps": 207,
+   "score": 0.0,
+   "success_at": null,
+   "last_step_score": 0.0,
+   "lifted": false,
+   "final_pos": [
+    0.2922,
+    0.00257,
+    0.8475
+   ],
+   "final_axis_deg": 0.966,
+   "max_height_over_rolling": 2e-05,
+   "final_arm_gap": 0.08829,
+   "column_mismatches": 0,
+   "reported_last_score": 0.0
+  }
+ ],
+ "score": 0.0
+}

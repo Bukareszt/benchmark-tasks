@@ -1,0 +1,26 @@
+{
+ "trace": "f_one_arm.csv",
+ "dt": 0.05,
+ "trials": [
+  {
+   "first_step": 0,
+   "last_step": 470,
+   "steps": 471,
+   "score": 1.0,
+   "success_at": 470,
+   "last_step_score": 1.0,
+   "lifted": false,
+   "final_pos": [
+    0.55115,
+    0.0141,
+    0.8775
+   ],
+   "final_axis_deg": 7.347,
+   "max_height_over_rolling": 0.0036,
+   "final_arm_gap": 0.0931,
+   "column_mismatches": 0,
+   "reported_last_score": 1.0
+  }
+ ],
+ "score": 1.0
+}

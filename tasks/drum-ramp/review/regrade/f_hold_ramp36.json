@@ -1,0 +1,26 @@
+{
+ "trace": "f_hold_ramp36.csv",
+ "dt": 0.05,
+ "trials": [
+  {
+   "first_step": 0,
+   "last_step": 350,
+   "steps": 351,
+   "score": 1.0,
+   "success_at": 350,
+   "last_step_score": 1.0,
+   "lifted": false,
+   "final_pos": [
+    0.51508,
+    0.00101,
+    0.8775
+   ],
+   "final_axis_deg": 0.119,
+   "max_height_over_rolling": 0.00363,
+   "final_arm_gap": 0.11865,
+   "column_mismatches": 0,
+   "reported_last_score": 1.0
+  }
+ ],
+ "score": 1.0
+}

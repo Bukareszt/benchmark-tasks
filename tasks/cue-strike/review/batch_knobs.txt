@@ -1,0 +1,11 @@
+f_demo1  task_score: 1 exit 0 end 2026-11-09T13:52:47Z
+f_demo2  task_score: 1 exit 0 end 2026-11-09T13:53:22Z
+f_idle  task_score: 0 exit 0 end 2026-11-09T13:53:44Z
+f_hand  task_score: 0 exit 0 end 2026-11-09T13:54:11Z
+f_stickpush  task_score: 0 exit 0 end 2026-11-09T13:54:59Z
+f_reach_l  task_score: 0 exit 0 end 2026-11-09T13:55:41Z
+f_reach_r REACH_ARM=right task_score: 0 exit 0 end 2026-11-09T13:56:24Z
+f_aimoff  task_score: 0.25 exit 0 end 2026-11-09T13:57:02Z
+f_aim0 AIM_DEG=0 task_score: 1 exit 0 end 2026-11-09T13:57:41Z
+f_aim45 AIM_DEG=4.5 task_score: 0.25 exit 0 end 2026-11-09T13:58:20Z
+BATCH_DONE

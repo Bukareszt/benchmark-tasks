@@ -1,0 +1,21 @@
+{
+ "trace": "f_demo2.csv",
+ "steps": 283,
+ "score": 1.0,
+ "success_at": 282,
+ "foul": null,
+ "foul_step": null,
+ "red_end": [
+  0.76563,
+  0.185,
+  0.7765
+ ],
+ "white_end": [
+  0.75912,
+  -0.25569,
+  0.7765
+ ],
+ "arms_logged": true,
+ "column_mismatches": 0,
+ "reported_last_score": 1.0
+}

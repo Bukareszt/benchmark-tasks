@@ -1,0 +1,21 @@
+{
+ "trace": "f_stickpush.csv",
+ "steps": 438,
+ "score": 0.0,
+ "success_at": null,
+ "foul": "stick_over_line",
+ "foul_step": 271,
+ "red_end": [
+  0.53,
+  0.0,
+  0.7765
+ ],
+ "white_end": [
+  0.57027,
+  -0.05656,
+  0.7765
+ ],
+ "arms_logged": true,
+ "column_mismatches": 0,
+ "reported_last_score": 0.0
+}

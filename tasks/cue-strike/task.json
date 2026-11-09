@@ -1,0 +1,21 @@
+{
+  "title": "Pot a red ball by striking the white ball with a stick",
+  "category": "Impact on AI timelines",
+  "keywords": [
+    "tool use",
+    "striking",
+    "collision",
+    "aiming",
+    "billiards",
+    "indirect manipulation"
+  ],
+  "instruction": "Use the wooden stick to strike the white ball so that it knocks the red ball into the blue goal box, onto its light blue floor. Keep the stick and both arms on your side of the yellow line, keep both arms at least 2 cm from both balls, and never touch the red ball with the stick.",
+  "context": "The red ball is out of bounds, so it can only be moved by another object: the white ball must be struck with a tool at the angle that sends the red one into the goal, as in billiards. It tests planning a chain of contacts and a controlled strike rather than direct handling.",
+  "setup": "World frame: x forward from the arms, y to the robot's left, z up; positions are object centres; heights are above the table top, which is 74.75 cm above the floor. Table: fixed oak-coloured tabletop, 110 x 130 x 6 cm, x -0.19 to 0.91 m, y -0.65 to 0.65 m. Mat: fixed green felt mat 90 x 68 cm, 4 mm thick, x -0.06 to 0.84 m, y -0.34 to 0.34 m. Line: yellow painted stripe across the whole mat, 1.5 cm wide, centred at x 0.42 m (near edge x 0.4125). White ball and red ball: loose phenolic balls, 5 cm across, 160 g, resting on the mat, white at x 0.30, y -0.03, red at x 0.53, y 0.00. Goal box: three fixed blue walls on the mat, 1 cm thick and 3 cm tall, open toward the arms; inside 10 cm deep (x 0.70 to 0.80) and 14 cm wide (y 0.07 to 0.21), its floor painted light blue on the mat. Rails: fixed dark green walls 1 cm thick and 2 cm tall along the mat's far edge (x 0.83 to 0.84) and along both side edges from x 0.47 to 0.84. Stick: loose dark-stained square wooden rod 34 x 2 x 2 cm, 120 g, lying on the mat along x, centred at x 0.15, y -0.20. Arms: two YAM 6-joint arms with parallel-jaw grippers (94 mm maximum opening), bases at x 0, y +-0.305 m, z 0.75 m, starting in the ready pose with the grippers open. Camera stand: fixed mock stand behind the arms, foot 11 x 11 x 1.6 cm at x -0.236, y -0.009; the top camera and two wrist cameras are the adapter's station cameras. Nothing else is on the table.",
+  "scoring": "Fouls, watched over the whole trial on the video: any part of the stick or of either arm past the line's near edge (x 0.4125 m), at any height; any part of either arm within 2 cm of either ball; the stick touching the red ball. After a foul the trial scores 0, whatever follows. Without a foul: 1.0 when at the end the red ball is at rest (moving under 1 cm/s) inside the goal box: its centre over the light blue floor (between the side walls' inner faces) and at least 2.5 cm (one radius) past the open side, the ball on the mat; the trial ends once this has held for 1 s. 0.5: at the end the red ball's centre is within 10 cm of the centre of the box's inside (x 0.75, y 0.14). 0.25: at the end the red ball's centre is at least 5 cm from where it started. 0: anything else. In simulation the arms are their collision meshes (every link but the fixed base; a point on a face between vertices is not measured), touching is within 3 mm, and everything is checked at each 20 Hz control step after the adapter's settling steps.",
+  "run_limit": "1,200 steps (1 minute at 20 Hz)",
+  "reset_notes": "Put both balls and the stick back at their listed positions and both arms in the ready pose. Nothing is consumed.",
+  "fidelity": "Rigid bodies in PhysX on CPU. Balls are analytic spheres, restitution 0.9 and friction 0.1 between them; the felt's rolling resistance is approximated by linear and angular damping (0.3/s), and the balls never sleep. Walls, rails and mat absorb bounces (restitution 0). The stick is a square rod, not a tapered cue. One fixed layout. Arm clearance and the step count come from a wrapper on the adapter's scene module.",
+  "scores": "Dream-1 run: 0.0; demo: 1.0",
+  "media": "M-UVXT52"
+}

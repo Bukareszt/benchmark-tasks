@@ -1,0 +1,21 @@
+{
+ "trace": "f_idle.csv",
+ "steps": 121,
+ "score": 0.0,
+ "success_at": null,
+ "foul": null,
+ "foul_step": null,
+ "red_end": [
+  0.53,
+  0.0,
+  0.7765
+ ],
+ "white_end": [
+  0.3,
+  -0.03,
+  0.7765
+ ],
+ "arms_logged": true,
+ "column_mismatches": 0,
+ "reported_last_score": 0.0
+}

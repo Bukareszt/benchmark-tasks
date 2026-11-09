@@ -1,0 +1,21 @@
+{
+ "trace": "f_aimoff.csv",
+ "steps": 323,
+ "score": 0.25,
+ "success_at": null,
+ "foul": null,
+ "foul_step": null,
+ "red_end": [
+  0.79614,
+  0.00083,
+  0.7765
+ ],
+ "white_end": [
+  0.79612,
+  -0.07642,
+  0.7765
+ ],
+ "arms_logged": true,
+ "column_mismatches": 0,
+ "reported_last_score": 0.25
+}

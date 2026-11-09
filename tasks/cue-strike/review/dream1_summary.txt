@@ -1,0 +1,6 @@
+policy: dream (--policy)
+embodiment: yam_arena (--embodiment)
+guardrails: clamp + delta-limit
+run status: completed
+  task_score: 0
+model: dreamlabs/dream-1-beta; 25 requests of 48 rows, 25 attempts, one session; started/ended in dream_ledger.txt
